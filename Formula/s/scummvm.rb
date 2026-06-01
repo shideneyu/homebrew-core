@@ -35,7 +35,7 @@ class Scummvm < Formula
   depends_on "libvorbis"
   depends_on "libvpx"
   depends_on "mad"
-  depends_on "sdl2"
+  depends_on "sdl2-compat"
   depends_on "theora"
 
   on_macos do
@@ -48,7 +48,11 @@ class Scummvm < Formula
   end
 
   def install
-    system "./configure", "--enable-release", "--with-sdl-prefix=#{Formula["sdl2"].opt_prefix}", *std_configure_args
+    args = %W[
+      --enable-release
+      --with-sdl-prefix=#{Formula["sdl2-compat"].opt_prefix}
+    ]
+    system "./configure", *args, *std_configure_args
     system "make", "install"
 
     rm_r(share/"pixmaps")
