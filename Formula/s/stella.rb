@@ -20,7 +20,7 @@ class Stella < Formula
   depends_on "pkgconf" => :build
   depends_on xcode: :build # for xcodebuild
   depends_on "libpng"
-  depends_on "sdl2"
+  depends_on "sdl2-compat"
 
   uses_from_macos "sqlite"
 
@@ -29,7 +29,7 @@ class Stella < Formula
   end
 
   def install
-    sdl2 = Formula["sdl2"]
+    sdl2 = Formula["sdl2-compat"]
     libpng = Formula["libpng"]
     if OS.mac?
       cd "src/os/macos" do
