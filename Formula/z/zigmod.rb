@@ -1,8 +1,8 @@
 class Zigmod < Formula
   desc "Package manager for the Zig programming language"
   homepage "https://nektro.github.io/zigmod/"
-  url "https://github.com/nektro/zigmod/archive/refs/tags/r99.tar.gz"
-  sha256 "b2bb91cfae4cb470c6b5e461f6a8bc33b0d4df8a8b0ddf35505ac9bf42b76072"
+  url "https://github.com/nektro/zigmod/archive/refs/tags/r103.tar.gz"
+  sha256 "965bd1aacbe4fee5c3dbbe0715d40f5b6a6413065bf5dc0385ba1ba1acc6c2e2"
   license "MIT"
 
   livecheck do
@@ -19,12 +19,8 @@ class Zigmod < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:  "404076d214fae1b64dcc4f17ec37606fc303fa18f475342933cfd93331817323"
   end
 
-  # Aligned to `zig@0.14` formula. Can be removed if upstream updates to newer Zig.
-  deprecate! date: "2026-08-19", because: "does not build with Zig >= 0.15"
-  disable! date: "2027-08-19", because: "does not build with Zig >= 0.15"
-
   depends_on "pkgconf" => :build
-  depends_on "zig@0.14" # https://github.com/nektro/zigmod/issues/113
+  depends_on "zig@0.15"
 
   def install
     # Fix illegal instruction errors when using bottles on older CPUs.
